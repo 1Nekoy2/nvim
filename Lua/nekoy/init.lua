@@ -1,2 +1,2 @@
 require("nekoy.core.remap")
-require("nekoy.core.theme")
+require("nekoy.core.nvim_config")
