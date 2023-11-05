@@ -2,6 +2,8 @@
 
 ## Preview
 
+<img src="https://github.com/1Nekoy2/nvim/blob/main/.github/Preview.png">
+
 ## Instalation
 
 #### Make a backup of your current nvim folder
