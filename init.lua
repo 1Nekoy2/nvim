@@ -1,2 +1,2 @@
 require("nekoy")
-require("nekoy.core.lazy")
+require("nekoy.core.lazy")
