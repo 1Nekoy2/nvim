@@ -58,3 +58,6 @@ vim.keymap.set("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>")			    -- Repla
 vim.keymap.set("v", "<C-s>", ":sort<CR>")									-- Sort highlighted text in visual mode with Control+S
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")								-- Move current line down
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")								-- Move current line up 
+
+-- Markdown Preview
+vim.keymap.set("n", "<leader>md","<cmd>MarkdownPreview<CR>")
