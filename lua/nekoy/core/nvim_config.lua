@@ -1,4 +1,5 @@
 vim.wo.number = true
+vim.wo.relativenumber = true
 vim.opt.syntax = "ON"
 vim.opt.backup = false
 vim.opt.compatible = false				-- turn off vi compatibility mode
