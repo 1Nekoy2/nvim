@@ -39,6 +39,9 @@ return {
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.taplo.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 			})
