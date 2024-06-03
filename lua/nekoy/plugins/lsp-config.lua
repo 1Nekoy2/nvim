@@ -12,45 +12,37 @@
 -- #######################################################################################
 
 return {
-	{
-		"williamboman/mason.nvim",
-		lazy = false,
-		config = function()
-			require("mason").setup()
-		end,
+	"neovim/nvim-lspconfig",
+	dependencies = {
+		"hrsh7th/cmp-nvim-lsp",
+		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{ "folke/neodev.nvim", opts = {} },
 	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
-		opts = {
-			auto_install = true,
-		},
-	},
-	{
-		"neovim/nvim-lspconfig",
-		lazy = false,
-		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	lazy = false,
+	config = function()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.taplo.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-			})
-		end,
-	},
+		local lspconfig = require("lspconfig")
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+		})
+		lspconfig.rust_analyzer.setup({
+			capabilities = capabilities,
+		})
+		lspconfig.taplo.setup({
+			capabilities = capabilities,
+		})
+		lspconfig.clangd.setup({
+			capabilities = capabilities,
+		})
+		lspconfig.bashls.setup({
+			capabilities = capabilities,
+		})
+		lspconfig.cssls.setup({
+			capabilities = capabilities,
+		})
+		lspconfig.html.setup({
+			capabilities = capabilities,
+		})
+	end,
 }
