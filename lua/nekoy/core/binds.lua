@@ -20,16 +20,18 @@ vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
--- none-ls
-vim.keymap.set("n", "<leader>p", vim.lsp.buf.format, { desc = "None-ls formating" })
+-- frormater
+vim.keymap.set({ "n", "v" }, "<leader>p", function()
+	require("conform").format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 1000,
+	})
+end, { desc = "Format file or range (in visual mode)" })
 
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- TIP: Disable arrow keys in normal mode
---vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>', { desc = "Disable arrow keys in normal mode" })
---vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>', { desc = "Disable arrow keys in normal mode" })
---vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>', { desc = "Disable arrow keys in normal mode" })
---vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>', { desc = "Disable arrow keys in normal mode" })
+-- increment/decrement numbers
+vim.keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
+vim.keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
 -- gitsigns
 vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
@@ -39,8 +41,8 @@ vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
 vim.keymap.set("n", "<leader>ee", ":Neotree filesystem reveal right<CR>", { desc = "Show filesystem in neotree" })
 
 -- lazygit
-vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = 'Open lazyGit'})
-vim.keymap.set("n", "<leader>lc", "<cmd>LazyGitFilter<CR>", { desc = 'Open lazyGit filters'})
+vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "Open lazyGit" })
+vim.keymap.set("n", "<leader>lc", "<cmd>LazyGitFilter<CR>", { desc = "Open lazyGit filters" })
 
 -- reload config
 vim.keymap.set("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>", { desc = "Reload neovim config" })
@@ -70,22 +72,7 @@ vim.keymap.set("n", "<leader>d", ":bd! <CR>", { desc = "Delets current buffer" }
 vim.keymap.set("i", "kj", "<Esc>", { desc = "Simulates ESC" })
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Simulates ESC" })
 
--- Automatically close brackets, parethesis, and quotes
-vim.keymap.set("i", "'", "''<left>", { desc = "Finish ' brackets" })
-vim.keymap.set("i", '"', '""<left>', { desc = 'Finish " brackets' })
-vim.keymap.set("i", "(", "()<left>", { desc = "Finish ( brackets" })
-vim.keymap.set("i", "[", "[]<left>", { desc = "Finish [ brackets" })
-vim.keymap.set("i", "{", "{}<left>", { desc = "Finish { brackets" })
-vim.keymap.set("i", "{;", "{};<left><left>", { desc = "Finish {; brackets" })
-vim.keymap.set("i", "/*", "/**/<left><left>", { desc = "Finish /* brackets" })
-
 -- Visual Maps
-vim.keymap.set(
-	"v",
-	"<leader>r",
-	'"hy:%s/<C-r>h//g<left><left>',
-	{ desc = "Replace all instances of highlighted words" }
-)
 vim.keymap.set("v", "<C-s>", ":sort<CR>", { desc = "Sort highlighted text in visual mode with" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move current line down" })
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv", { desc = "Move current line up" })
