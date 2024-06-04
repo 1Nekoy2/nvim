@@ -10,6 +10,7 @@
 --
 -- by Nekoy
 -- #######################################################################################
+
 -- TODO: try replacing that too
 return {
 	"neovim/nvim-lspconfig",
@@ -19,31 +20,43 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
 	},
-	lazy = false,
 	config = function()
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
+		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-		lspconfig.lua_ls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.rust_analyzer.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.taplo.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.clangd.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.bashls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.cssls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.html.setup({
-			capabilities = capabilities,
+
+		-- import mason_lspconfig plugin
+		local mason_lspconfig = require("mason-lspconfig")
+
+		-- import cmp-nvim-lsp plugin
+		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+		-- used to enable autocompletion (assign to every lsp server config)
+		local capabilities = cmp_nvim_lsp.default_capabilities()
+
+		mason_lspconfig.setup_handlers({
+			-- default handler for installed servers
+			function(server_name)
+				lspconfig[server_name].setup({
+					capabilities = capabilities,
+				})
+			end,
+			["lua_ls"] = function()
+				-- configure lua server (with special settings)
+				lspconfig["lua_ls"].setup({
+					capabilities = capabilities,
+					settings = {
+						Lua = {
+							-- make the language server recognize "vim" global
+							diagnostics = {
+								globals = { "vim" },
+							},
+							completion = {
+								callSnippet = "Replace",
+							},
+						},
+					},
+				})
+			end,
 		})
 	end,
 }

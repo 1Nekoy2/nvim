@@ -15,10 +15,12 @@ vim.g.mapleader = " " -- sets leader key
 vim.g.maplocalleader = " "
 
 -- lsp
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Code definitions" })
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true, desc = "Show documentation for what is under cursor" })
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { silent = true, desc = "Show LSP definitions" })
+vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { silent = true, desc = "Go to declaration" })
+vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { silent = true, desc = "Code definitions" })
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { silent = true, desc = "See available code actions" })
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { silent = true, desc = "Smart rename" })
 
 --telescope
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Search Help" })
