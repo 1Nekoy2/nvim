@@ -29,6 +29,18 @@ vim.keymap.set({ "n", "v" }, "<leader>p", function()
 	})
 end, { desc = "Format file or range (in visual mode)" })
 
+-- todo-comments
+vim.keymap.set("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+vim.keymap.set("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+-- auto session
+vim.keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
+vim.keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" })
+
 -- increment/decrement numbers
 vim.keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 vim.keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
@@ -39,6 +51,9 @@ vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
 
 -- neotree
 vim.keymap.set("n", "<leader>ee", ":Neotree filesystem reveal right<CR>", { desc = "Show filesystem in neotree" })
+
+--substytution
+
 
 -- lazygit
 vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "Open lazyGit" })
