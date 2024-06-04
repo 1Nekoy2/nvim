@@ -20,6 +20,17 @@ vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
+--telescope
+vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Search Help" })
+vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Search Keymaps" })
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Search Files" })
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope builtin<cr>", { desc = "Search Select Telescope" })
+vim.keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Search by Grep" })
+vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "Search Diagnostics" })
+vim.keymap.set("n", "<leader>fr", "<cmd>Telescope resume<cr>", { desc = "Search Resume" })
+vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope buffers<cr>", { desc = "Find existing buffers" })
+
 -- frormater
 vim.keymap.set({ "n", "v" }, "<leader>p", function()
 	require("conform").format({
@@ -53,7 +64,6 @@ vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
 vim.keymap.set("n", "<leader>ee", ":Neotree filesystem reveal right<CR>", { desc = "Show filesystem in neotree" })
 
 --substytution
-
 
 -- lazygit
 vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "Open lazyGit" })
