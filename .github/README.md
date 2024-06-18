@@ -2,7 +2,7 @@
 
 ## Preview
 
-<img src="https://github.com/1Nekoy2/nvim/blob/main/.github/Preview.png">
+<img src="https://github.com/1Nekoy2/nvim/blob/master/.github/Preview.png">
 
 ## Instalation
 
