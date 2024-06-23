@@ -2,23 +2,23 @@
 
 ## Preview
 
-<img src="https://github.com/1Nekoy2/nvim/blob/master/.github/Preview.png">
+![preview](preview.png)
 
 ## Instalation
 
 #### Make a backup of your current nvim folder
 
-```shell
+```bash
 mv ~/.config/nvim ~/.config/nvim.bak
 ```
 
 #### Clone the repository
 
-```shell
+```bash
 git clone https://github.com/1Nekoy2/nvim.git ~/.config/nvim
 ```
 ## Uninstaling 
 
-```shell
+```bash
 rm -r ~/.config/nvim
 ```
